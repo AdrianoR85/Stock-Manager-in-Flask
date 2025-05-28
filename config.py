@@ -3,8 +3,8 @@ import random, string
 
 class Config(object):
   CSRF_ENABLED = True # Enable the use of encryption in flask sessions
-  SECRET_KEY = 'ysb_92=qe#' # It will be used at some point to create encrypted keys and values
-  TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "template") # default template path
+  SECRET = 'ysb_92=qe#dgjf8%0ng+a*#4rt#5%3*4kw5%i2bck*gn@w3@f&-&' # It will be used at some point to create encrypted keys and values
+  TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates") # default template path
   ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) # Path to where the project root is located
   APP = None # Constant that will receive an application property
 
