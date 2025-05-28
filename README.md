@@ -47,3 +47,15 @@ stock-manager-flask
 - Python
 - Flask
 - SQLAlchemy
+
+## 🛠️ What Was Done
+
+### Config.py
+- Created a base configuration class called `Config` with shared attributes.
+- Defined specific classes for:
+  - Development: `DevelopmentConfig`
+  - Testing: `TestingConfig`
+  - Production: `ProductionConfig`
+- Used class inheritance to avoid code duplication and maintain organized settings.
+- Mapped the configurations using the environment variable `FLASK_ENV`.
+
