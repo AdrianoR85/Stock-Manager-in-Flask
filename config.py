@@ -13,7 +13,7 @@ class Config(object):
   SQLALCHEMY_DATABASE_URI = (
         f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
         f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-    )
+    ) # database connection string (MySQL), built using .env variables.
 
 class DevelopmentConfig(Config):
   TESTING = True
