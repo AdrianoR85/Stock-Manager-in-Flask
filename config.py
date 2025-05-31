@@ -1,5 +1,8 @@
 import os
 import random, string
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config(object):
   CSRF_ENABLED = True # Enable the use of encryption in flask sessions
@@ -7,6 +10,10 @@ class Config(object):
   TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates") # default template path
   ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) # Path to where the project root is located
   APP = None # Constant that will receive an application property
+  SQLALCHEMY_DATABASE_URI = (
+        f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+        f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    )
 
 class DevelopmentConfig(Config):
   TESTING = True
