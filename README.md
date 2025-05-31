@@ -50,7 +50,7 @@ stock-manager-flask
 
 ## 🛠️ What Was Done
 
-### Config.py
+### config.py
 - Created a base configuration class called `Config` with shared attributes.
 - Defined specific classes for:
   - Development: `DevelopmentConfig`
@@ -58,4 +58,19 @@ stock-manager-flask
   - Production: `ProductionConfig`
 - Used class inheritance to avoid code duplication and maintain organized settings.
 - Mapped the configurations using the environment variable `FLASK_ENV`.
+### app.py
+- Retrieved the active configuration object based on the current environment using `config = app_config[app_active]`
+- Defined the factory function `create_app(config_name)` to create and configure a Flask application instance dynamically.
+- Inside create_app:
+  - Created a new Flask app, specifying `'templates'` as the folder for HTML templates.
+  - Set the app's secret key from the configuration object `(config.SECRET)`.
+  - Loaded the configuration from the configuration class mapped by `config_name` with `app.config.from_object()`.
+  - Loaded additional configuration from the config.py file using `app.config.from_pyfile()`.
+  - Defined a basic route `'/'` that returns `'Hello, world!'` when accessed.
+- Returned the fully configured Flask application instance from the factory function.
 
+### run.py
+- Imported `create_app` and configuration data to set up the app environment.
+- Selected the active configuration instance based on the `FLASK_ENV variable`.
+- Created the Flask app and stored it inside the configuration object (`config.APP`).
+- Started the Flask server using host and port values from the active configuration.
