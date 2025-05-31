@@ -58,6 +58,7 @@ stock-manager-flask
   - Production: `ProductionConfig`
 - Used class inheritance to avoid code duplication and maintain organized settings.
 - Mapped the configurations using the environment variable `FLASK_ENV`.
+
 ### app.py
 - Retrieved the active configuration object based on the current environment using `config = app_config[app_active]`
 - Defined the factory function `create_app(config_name)` to create and configure a Flask application instance dynamically.
@@ -67,6 +68,8 @@ stock-manager-flask
   - Loaded the configuration from the configuration class mapped by `config_name` with `app.config.from_object()`.
   - Loaded additional configuration from the config.py file using `app.config.from_pyfile()`.
   - Defined a basic route `'/'` that returns `'Hello, world!'` when accessed.
+- Creates the database instance.
+- Initializes SQLAlchemy with the app.
 - Returned the fully configured Flask application instance from the factory function.
 
 ### run.py
