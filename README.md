@@ -47,6 +47,7 @@ stock-manager-flask
 - Python
 - Flask
 - SQLAlchemy
+- Migrate
 
 ## 🛠️ What Was Done
 
@@ -77,3 +78,48 @@ stock-manager-flask
 - Selected the active configuration instance based on the `FLASK_ENV variable`.
 - Created the Flask app and stored it inside the configuration object (`config.APP`).
 - Started the Flask server using host and port values from the active configuration.
+
+---
+## 🔄 Database Migration Workflow (Flask-Migrate)
+Flask-Migrate uses Alembic to handle SQLAlchemy database migrations. Follow the steps below to set up and manage database schema changes.
+
+### ✅ Initial Setup (Only Once)
+If this is your first time setting up migrations:
+
+```bash
+flask db init
+```
+This will create a migrations/ directory with the necessary Alembic configuration files.
+
+### 🛠 Apply Model Changes
+Whenever you make changes to your models (add tables, modify fields, etc.), follow this process:
+
+1. Generate a new migration script:
+
+```bash
+  flask db migrate -m "Describe the change, e.g., add user table"
+```
+2. Apply the migration to the database:
+
+```bash
+  flask db upgrade
+```
+This will apply the changes to your database schema.
+
+### 🔁 Repeat as Needed
+Every time you update your models:
+- Run `flask db migrate` to create a new migration file
+- Then run `flask db upgrade` to apply it
+
+### ⚠️ Important Notes
+Make sure all models are imported before calling `migrate.init_app(app, db)` inside your create_app function.
+
+Example:
+
+```python
+  db.init_app(app)
+  from model import Role, User, Category, Product  # import models here
+  migrate.init_app(app, db)
+```
+Ensure the `model/ directory has an __init__.py` file so Python recognizes it as a package.
+
