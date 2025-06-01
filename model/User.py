@@ -1,9 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from config import app_config, app_active
-from Role import Role
-config = app_config[app_active]
-
-db = SQLAlchemy(config.APP)
+from app import db
+from .Role import Role
 
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -15,4 +11,4 @@ class User(db.Model):
   recovery_code = db.Column(db.String(200), nullable=True)
   active = db.Column(db.Integer, default=1, nullable=True)
 
-  role = db.Column(db.Integer, db.foreignkey(Role.id), nullable=False)
+  role = db.Column(db.Integer, db.ForeignKey(Role.id), nullable=False)
