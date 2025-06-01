@@ -25,4 +25,8 @@ def create_app(config_name=None):
   def index():
     return 'Hello, world!'
   
+  @app.route('/product/<id>')
+  def product(id):
+    return f'Product {id}'
+
   return app
