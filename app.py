@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import app_config, app_active
+
+from controller.User import UserController
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -24,5 +26,41 @@ def create_app(config_name=None):
   @app.route('/')
   def index():
     return 'Hello, world!'
+  
+  @app.route('/login/')
+  def login():
+    return f'Login here!'
+
+  @app.route('/login/', methods=['POST'])
+  def logi_post():
+    user = UserController()
+    email = request.form['email']
+    password = request.form['password']
+
+    result = user.login(email, password)
+
+    if result:
+      return redirect('/admin/')
+    else:
+      return render_template('login.html', 
+                             data={'status': 401,
+                                   'msg':'Incorrect data user',
+                                   'type': None
+                                   })
+    
+  @app.route('recovery-password/')
+  def recovery_password():
+    return 'recovery password window here!'
+  
+  @app.route('recovery-password/', methods=['POST'])
+  def send_recovery_password():
+    user = UserController()
+
+    result = user.recovery(request.form['email'])
+
+    if result:
+      return render_template('recovery.html',data={'status': 200,'msg':'Recovery email sent successfully.'})
+    else:
+      return render_template('recovery.html',data={'status': 401,'msg':'Error sending recovery email.'})
   
   return app
