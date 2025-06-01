@@ -14,6 +14,8 @@ class Config(object):
         f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
         f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
     ) # database connection string (MySQL), built using .env variables.
+  SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 class DevelopmentConfig(Config):
   TESTING = True
@@ -38,10 +40,11 @@ class ProductionConfig(Config):
   PORT_HOST = 8080
   URL_MAIN = f'http://{IP_HOST}:{PORT_HOST}'
 
+
 app_config = {
   'development': DevelopmentConfig(),
   'testing': TestingConfig(),
   'production': ProductionConfig()
 }
 
-app_active = os.getenv('FLASK_ENV')
+app_active = os.getenv('FLASK_ENV', 'development') 

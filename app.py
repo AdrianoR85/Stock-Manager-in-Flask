@@ -1,22 +1,26 @@
-# -*-coding:utf-8-*-
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from config import app_config, app_active
 
-from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+migrate = Migrate()
 
-config = app_config[app_active]
-def create_app(config_name):
-  app = Flask(__name__, template_folder='templates')
-
-  app.secret_key = config.SECRET
+def create_app(config_name=None):
+  if config_name is None:
+      config_name = app_active or 'development'
+  
+  app = Flask(__name__, template_folder='template')
   app.config.from_object(app_config[config_name])
-  app.config.from_pyfile('config.py')
+  app.secret_key = app.config['SECRET']
 
-  # Database configuration
-  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-  db = SQLAlchemy(config.APP)
   db.init_app(app)
 
+  # Import your models here
+  from model import Role, User, Category, Product
+
+  migrate.init_app(app, db)
+  
   @app.route('/')
   def index():
     return 'Hello, world!'

@@ -1,15 +1,10 @@
-from flask_sqlalchemy import SQLAlchemy
-from config import app_config, app_active
+from app import db
 
-from model.User import User
-from model.Category import Category
-
-config = app_config[app_active]
-
-db = SQLAlchemy(config.APP)
+from .User import User
+from .Category import Category
 
 class Product(db.Model):
-  id = db.Column(db.Intenger, primary_key=True)
+  id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(20), unique=True, nullable=False)
   description = db.Column(db.Text(), nullable=False)
   quantity = db.Column(db.Integer, default=0, nullable=True)
@@ -19,5 +14,5 @@ class Product(db.Model):
   last_updated = db.Column(db.DateTime(6), onupdate=db.func.current_timestamp(), nullable=True)
   status = db.Column(db.Boolean(), default=1, nullable=True)
 
-  user_created = db.Column(db.Integer, db.foreignKey(User.id), nullable=False)
-  category = db.Column(db.Integer, db.foreignKey(Category.id), nullable=False)
+  user_created = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
+  category = db.Column(db.Integer, db.ForeignKey(Category.id), nullable=False)
