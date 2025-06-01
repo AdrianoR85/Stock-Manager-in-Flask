@@ -6,7 +6,7 @@ class UserController():
   
   def login(self, email, password):
     # get the email data and saves it in the user model attribute 
-    self.user_model.email
+    self.user_model.email = email
 
     # Check if the user exists in the database
     result = self.user_model.get_user_by_email()
