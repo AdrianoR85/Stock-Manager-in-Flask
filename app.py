@@ -2,25 +2,26 @@ from flask import Flask, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import app_config, app_active
+from admin.Admin import start_views
 
 from controller.User import UserController
 
-db = SQLAlchemy()
-migrate = Migrate()
+from extensions import db, migrate
 
 def create_app(config_name=None):
   if config_name is None:
       config_name = app_active or 'development'
   
-  app = Flask(__name__, template_folder='template')
+  app = Flask(__name__, template_folder='templates')
   app.config.from_object(app_config[config_name])
   app.secret_key = app.config['SECRET']
 
   db.init_app(app)
 
+  start_views(app, db)
+
   # Import your models here
   from model import Role, User, Category, Product
-
   migrate.init_app(app, db)
   
   @app.route('/')
@@ -48,11 +49,11 @@ def create_app(config_name=None):
                                    'type': None
                                    })
     
-  @app.route('recovery-password/')
+  @app.route('/recovery-password/')
   def recovery_password():
     return 'recovery password window here!'
   
-  @app.route('recovery-password/', methods=['POST'])
+  @app.route('/recovery-password/', methods=['POST'])
   def send_recovery_password():
     user = UserController()
 

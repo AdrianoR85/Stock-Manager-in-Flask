@@ -1,4 +1,4 @@
-from app import db
+from extensions import db
 from .Role import Role
 from passlib.hash import  pbkdf2_sha256
 
