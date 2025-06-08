@@ -57,12 +57,12 @@ stock-manager-flask
 ---
 
  ## Required Libraries
-- **Flask:** A small web framework to build websites and APIs.
-- **SQL Alchemy:** A tool to help Python talk to databases using objects
-- **Flask-Admin:** A tool to create an admin panel for your Flask app
-- **PyMySQ:** A library that lets Python connect to a MySQL database.
-- **Flask-Migrate:** Helps manage changes in the database using Alembic.
-- **passlib:** A library to hash (encrypt) passwords safely.
+- **```pip install Flask```**: A small web framework to build websites and APIs.
+- **```pip install Flask-SQLAlchemy```**: A tool to help Python talk to databases using objects
+- **```pip install Flask-Admin```**: A tool to create an admin panel for your Flask app
+- **```pip install pymysql```**: A library that lets Python connect to a MySQL database.
+- **```pip install Flask-Migrate```**: Helps manage changes in the database using Alembic.
+- **```pip install passlib```**: A library to hash (encrypt) passwords safely.
 
 ## 🛠️ Steps
 
@@ -70,12 +70,6 @@ stock-manager-flask
 
 - [x] Creating the Structure.
 - [x] Install the required libraries.
-  - ```pip install Flask```
-  - ```pip install Flask-SQLAlchemy```
-  - ```pip install Flask-Admin```
-  - ```pip install Flask-Migrate```
-  - ```pip install pymysql```
-  - ```pip install passlib```
 - [ ] Create environments for each phase of the project.
 - [ ] Create a Flask Application.v	No
 - [ ] Configure Flask Database (SQL Alchemy + Migrate).
