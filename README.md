@@ -3,10 +3,15 @@
 [![Python](https://img.shields.io/badge/Python-3.13+-blue?logo=python)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)]()
 
-This repository is for my learning with Flask. I will use the book Flask de A a Z to study, where the author teaches Flask by developing a stock manager. Everything I learn on this path will be added here.
+This project is based on the book *"Flask from A to Z – Build More Complete Web Applications"*, written by **Tiago Luiz**. The book teaches how to build web applications using **Flask**, a popular Python web framework.
 
-## About the Project
-"You will make a product management system. In this system, we will organize categories, users, and roles. You can limit a user to access only the system API or also the admin area, with secure login."
+The goal of the book is to help the reader go from basic to advanced levels in web development with Flask. It covers many important topics
+The final result is a complete and functional web app, ready for real use. 
+
+The book also shows good practices for writing clean and easy-to-maintain code.
+This project follows the book's content, with notes, example code, and some possible changes or improvements.
+
+[Link to buy the book](https://www.casadocodigo.com.br/products/livro-flask-a-z)
 
 ## 📁 Project Structure
 ```bash
