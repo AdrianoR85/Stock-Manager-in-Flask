@@ -49,37 +49,35 @@ stock-manager-flask
 - SQLAlchemy
 - Migrate
 
-## 🛠️ What Was Done
+---
 
-### config.py
-- Created a base configuration class called `Config` with shared attributes.
-- Defined specific classes for:
-  - Development: `DevelopmentConfig`
-  - Testing: `TestingConfig`
-  - Production: `ProductionConfig`
-- Used class inheritance to avoid code duplication and maintain organized settings.
-- Mapped the configurations using the environment variable `FLASK_ENV`.
+ ## Required Libraries
+- **Flask:** A small web framework to build websites and APIs.
+- **SQL Alchemy:** A tool to help Python talk to databases using objects
+- **Flask-Admin:** A tool to create an admin panel for your Flask app
+- **PyMySQ:** A library that lets Python connect to a MySQL database.
+- **Flask-Migrate:** Helps manage changes in the database using Alembic.
+- **passlib:** A library to hash (encrypt) passwords safely.
 
-### app.py
-- Retrieved the active configuration object based on the current environment using `config = app_config[app_active]`
-- Defined the factory function `create_app(config_name)` to create and configure a Flask application instance dynamically.
-- Inside create_app:
-  - Created a new Flask app, specifying `'templates'` as the folder for HTML templates.
-  - Set the app's secret key from the configuration object `(config.SECRET)`.
-  - Loaded the configuration from the configuration class mapped by `config_name` with `app.config.from_object()`.
-  - Loaded additional configuration from the config.py file using `app.config.from_pyfile()`.
-  - Defined a basic route `'/'` that returns `'Hello, world!'` when accessed.
-- Creates the database instance.
-- Initializes SQLAlchemy with the app.
-- Returned the fully configured Flask application instance from the factory function.
+## 🛠️ Steps
 
-### run.py
-- Imported `create_app` and configuration data to set up the app environment.
-- Selected the active configuration instance based on the `FLASK_ENV variable`.
-- Created the Flask app and stored it inside the configuration object (`config.APP`).
-- Started the Flask server using host and port values from the active configuration.
+### Step 1 - Getting Started
+
+- [x] Creating the Structure.
+- [x] Install the required libraries.
+  - ```pip install Flask```
+  - ```pip install Flask-SQLAlchemy```
+  - ```pip install Flask-Admin```
+  - ```pip install Flask-Migrate```
+  - ```pip install pymysql```
+  - ```pip install passlib```
+- [ ] Create environments for each phase of the project.
+- [ ] Create a Flask Application.v	No
+- [ ] Configure Flask Database (SQL Alchemy + Migrate).
+- [ ] Run the Flask Application.
 
 ---
+
 ## 🔄 Database Migration Workflow (Flask-Migrate)
 Flask-Migrate uses Alembic to handle SQLAlchemy database migrations. Follow the steps below to set up and manage database schema changes.
 
