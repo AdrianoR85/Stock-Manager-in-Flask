@@ -3,10 +3,15 @@
 [![Python](https://img.shields.io/badge/Python-3.13+-blue?logo=python)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)]()
 
-This repository is for my learning with Flask. I will use the book Flask de A a Z to study, where the author teaches Flask by developing a stock manager. Everything I learn on this path will be added here.
+This project is based on the book *"Flask from A to Z – Build More Complete Web Applications"*, written by **Tiago Luiz**. The book teaches how to build web applications using **Flask**, a popular Python web framework.
 
-## About the Project
-"You will make a product management system. In this system, we will organize categories, users, and roles. You can limit a user to access only the system API or also the admin area, with secure login."
+The goal of the book is to help the reader go from basic to advanced levels in web development with Flask. It covers many important topics
+The final result is a complete and functional web app, ready for real use. 
+
+The book also shows good practices for writing clean and easy-to-maintain code.
+This project follows the book's content, with notes, example code, and some possible changes or improvements.
+
+[Link to buy the book](https://www.casadocodigo.com.br/products/livro-flask-a-z)
 
 ## 📁 Project Structure
 ```bash
@@ -52,12 +57,12 @@ stock-manager-flask
 ---
 
  ## Required Libraries
-- **Flask:** A small web framework to build websites and APIs.
-- **SQL Alchemy:** A tool to help Python talk to databases using objects
-- **Flask-Admin:** A tool to create an admin panel for your Flask app
-- **PyMySQ:** A library that lets Python connect to a MySQL database.
-- **Flask-Migrate:** Helps manage changes in the database using Alembic.
-- **passlib:** A library to hash (encrypt) passwords safely.
+- **```pip install Flask```**: A small web framework to build websites and APIs.
+- **```pip install Flask-SQLAlchemy```**: A tool to help Python talk to databases using objects
+- **```pip install Flask-Admin```**: A tool to create an admin panel for your Flask app
+- **```pip install pymysql```**: A library that lets Python connect to a MySQL database.
+- **```pip install Flask-Migrate```**: Helps manage changes in the database using Alembic.
+- **```pip install passlib```**: A library to hash (encrypt) passwords safely.
 
 ## 🛠️ Steps
 
@@ -65,12 +70,6 @@ stock-manager-flask
 
 - [x] Creating the Structure.
 - [x] Install the required libraries.
-  - ```pip install Flask```
-  - ```pip install Flask-SQLAlchemy```
-  - ```pip install Flask-Admin```
-  - ```pip install Flask-Migrate```
-  - ```pip install pymysql```
-  - ```pip install passlib```
 - [ ] Create environments for each phase of the project.
 - [ ] Create a Flask Application.v	No
 - [ ] Configure Flask Database (SQL Alchemy + Migrate).
