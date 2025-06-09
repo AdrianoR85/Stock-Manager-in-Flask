@@ -26,7 +26,7 @@ by python-dotenv.
 Example .flaskenv content:
   FLASK_ENV=development
 
-The variable `app_active` below reads the environment value and selects the correct configuration.
+The variable `app_active` below reads the environment value and If no environment is provided, the default will be 'development'.
 """
 
 import os 
@@ -56,18 +56,18 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-  TESTING = False 
+  TESTING = True
   DEBUG = True
   IP_HOST = 'localhost'
-  PORT_HOST = 8000
+  PORT_HOST = 5000
   URL_MAIN = f"http://{IP_HOST}:{PORT_HOST}"
 
 
 class ProductionConfig(Config):
   TESTING = False 
-  DEBUG = True
+  DEBUG = False
   IP_HOST = 'localhost'
-  PORT_HOST = 8000
+  PORT_HOST = 8080
   URL_MAIN = f"http://{IP_HOST}:{PORT_HOST}"
 
 app_config = {
