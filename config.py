@@ -19,7 +19,7 @@ The attributes used in the configuration are:
 """
 Environment selection:
 
-To avoid manually setting the environment in the terminal, create a `.flaskenv` file
+To avoid manually setting the environment in the terminal, create a `.env` file
 in the project root with the variable `FLASK_ENV`. This will be automatically loaded 
 by python-dotenv.
 

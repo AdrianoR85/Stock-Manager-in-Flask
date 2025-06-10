@@ -71,8 +71,8 @@ stock-manager-flask
 - [x] Creating the Structure.
 - [x] Install the required libraries.
 - [x] Create environments for each phase of the project.
-- [ ] Create a Flask Application.
-- [ ] Configure Flask Database (SQL Alchemy + Migrate).
+- [x] Create a Flask Application.
+- [ ] Configure Flask Database (SQL Alchemy).
 - [ ] Run the Flask Application.
 
 ---
