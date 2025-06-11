@@ -1,10 +1,7 @@
+import os 
 from flask import Flask
 from config import app_active, app_config
-import os 
-
-from flask import Flask
-from config import app_active, app_config
-import os 
+from flask_sqlalchemy import SQLAlchemy
 
 # Gets the active environment settings (development, test, or production)
 config = app_config[app_active]
@@ -16,6 +13,10 @@ def create_app(config_name):
   # Loads all settings (DEBUG, SECRET_KEY, database URL, etc.)
   # from the chosen environment (development/test/production)
   app.config.from_object(app_config[config_name])
+
+  # Initialize SQLAlchemy
+  db = SQLAlchemy(config.APP)
+  db.init_app(app)
 
   # Main route (home page)
   @app.route('/')
