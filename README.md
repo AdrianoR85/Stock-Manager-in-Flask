@@ -115,7 +115,7 @@ Flask is a lightweight and easy-to-use web framework for Python. It is designed 
 -----------------------------------------------
 ## About SQLAlchemy and Models
 
-**SQLAlchemy** is a popular Python library for working with databases. It provides tools to interact with relational databases (like MySQL, PostgreSQL, SQLite) in an efficient and Pythonic way.
+**SQLAlchemy** is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
 
 **Models** are Python classes that represent database tables. They define the structure of your data and allow you to interact with the database in an object-oriented way.
 
