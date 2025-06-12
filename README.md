@@ -77,8 +77,8 @@ stock-manager-flask
 
 ### Step 2 -  Database Setup
 #### Models:
-- [ ] Create User Mode
-- [ ] Create Role Model
+- [x] Create User Mode
+- [x] Create Role Model
 - [ ] Create Category Model
 - [ ] Create Product Model
 
