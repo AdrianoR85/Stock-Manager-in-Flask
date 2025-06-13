@@ -79,7 +79,7 @@ stock-manager-flask
 #### Models:
 - [x] Create User Mode
 - [x] Create Role Model
-- [ ] Create Category Model
+- [x] Create Category Model
 - [ ] Create Product Model
 
 #### Migrations
