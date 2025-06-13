@@ -80,7 +80,7 @@ stock-manager-flask
 - [x] Create User Mode
 - [x] Create Role Model
 - [x] Create Category Model
-- [ ] Create Product Model
+- [x] Create Product Model
 
 #### Migrations
 - [ ] Initialize Migration System (`flask db init`)
