@@ -83,10 +83,10 @@ stock-manager-flask
 - [x] Create Product Model
 
 #### Migrations
-- [ ] Configuring the migrate.py file
-- [ ] Initialize Migration System (`flask db init`)
-- [ ] Generate Migration Script (`flask db migrate -m "Initial models"`)
-- [ ] Apply Migrations to Database (`flask db upgrade`)
+- [x] Configuring the migrate.py file
+- [x] Initialize Migration System (`flask db init`)
+- [x] Generate Migration Script (`flask db migrate -m "Initial models"`)
+- [x] Apply Migrations to Database (`flask db upgrade`)
 
 -----------------------------------------------
 
@@ -159,47 +159,63 @@ print(users)  # Output: [<User john>]
 ```
 -----------------------------------------------
 
-## 🔄 Database Migration Workflow (Flask-Migrate)
+## 📦 Database Migrations with Flask-Migrate
 
-Flask-Migrate uses Alembic to handle SQLAlchemy database migrations. Follow the steps below to set up and manage database schema changes.
+A migration is a script that updates the database — for example, adding a new table or column. You do not need to delete or recreate the database when your models change. Flask-Migrate helps you create and apply these changes step by step.
 
-### ✅ Initial Setup (Only Once)
-If this is your first time setting up migrations:
+### ⚙️ How to configure Flask-Migrate
 
+#### 1. Install the library
+```bash
+pip install Flask-Migrate
+```
+#### 2. Import and initialize in your Flask app (in migrate.py)
+```python
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db' # or other database
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+from models import *
+```
+#### 3. Before using the flask command, set the app:
+
+*Linux/macOS:*
+```bash
+export FLASK_APP=app.py
+```
+
+*Windows:*
+```bash
+set FLASK_APP=app.py
+```
+#### 4. Create the migration folder
 ```bash
 flask db init
 ```
-This will create a migrations/ directory with the necessary Alembic configuration files.
-
-### 🛠 Apply Model Changes
-Whenever you make changes to your models (add tables, modify fields, etc.), follow this process:
-
-1. Generate a new migration script:
-
+#### 4. Create the migration folder
 ```bash
-  flask db migrate -m "Describe the change, e.g., add user table"
+flask db init
 ```
-2. Apply the migration to the database:
-
+#### 5. Create a new migration script
 ```bash
-  flask db upgrade
+flask db migrate -m "message"
 ```
-This will apply the changes to your database schema.
-
-### 🔁 Repeat as Needed
-Every time you update your models:
-- Run `flask db migrate` to create a new migration file
-- Then run `flask db upgrade` to apply it
-
-### ⚠️ Important Notes
-Make sure all models are imported before calling `migrate.init_app(app, db)` inside your create_app function.
-
-Example:
-
-```python
-  db.init_app(app)
-  from model import Role, User, Category, Product  # import models here
-  migrate.init_app(app, db)
+#### 6. Apply the migration to the database
+```bash
+flask db upgrade
 ```
-Ensure the `model/ directory has an __init__.py` file so Python recognizes it as a package.
 
+### Migration commands
+|  Command                          | Description                         |
+| --------------------------------- | ----------------------------------- |
+| ``flask db init``                 |  Create the migration folder        |
+| ``flask db migrate -m "message"`` |	Create a new migration script       | 
+| ``flask db upgrade``	            | Apply the migration to the database |
+| ``flask db downgrade``	          | Revert the last migration           |
+| ``flask db history``	            | Show the history of migrations      |

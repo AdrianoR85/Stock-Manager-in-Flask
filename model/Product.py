@@ -9,7 +9,7 @@ db = SQLAlchemy(config.APP)
 class Product(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(20), unique=True, nullable=False)
-  description = db.Column(db.Text, nullable=True)
+  description = db.Column(db.Text(), nullable=True)
   qtd= db.Column(db.Integer, nullable=True, default=0)
   image = db.Column(db.Text(), nullable=True)
   price = db.Column(db.Numeric(10,2), nullable=False)
