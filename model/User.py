@@ -11,8 +11,8 @@ class User(db.Model):
   username = db.Column(db.String(40), unique=True, nullable=False)
   email = db.Column(db.String(120), unique=True, nullable=False)
   password = db.Column(db.String, nullable=False)
-  date_created = db.Column(db.DateTime(6), default=db.func_current_timestamp(), nullable=False)
-  last_update = db.Column(db.DateTime(6), onupdate=db.func_current_timestamp(), nullable= True)
+  date_created = db.Column(db.DateTime(6), default=db.func.now(), nullable=False)
+  last_update = db.Column(db.DateTime(6), onupdate=db.func.now(), nullable= True)
   recovery_code = db.Column(db.String(200), nullable=True)
   active = db.Column(db.Boolean(), default=1, nullable=True)
   

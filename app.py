@@ -6,7 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 # Gets the active environment settings (development, test, or production)
 config = app_config[app_active]
 
-def create_app(config_name):
+def create_app(config_name=None):
+  if not config_name:
+     config_name = 'development'
   # Creates the Flask app and sets the 'templates' folder
   app = Flask(__name__, template_folder='templates')
 

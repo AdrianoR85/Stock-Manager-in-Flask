@@ -83,6 +83,7 @@ stock-manager-flask
 - [x] Create Product Model
 
 #### Migrations
+- [ ] Configuring the migrate.py file
 - [ ] Initialize Migration System (`flask db init`)
 - [ ] Generate Migration Script (`flask db migrate -m "Initial models"`)
 - [ ] Apply Migrations to Database (`flask db upgrade`)
