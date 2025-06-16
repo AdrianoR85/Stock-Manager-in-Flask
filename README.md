@@ -46,7 +46,7 @@ stock-manager-flask
 |  | lnew_password.html
 |  | recovery.html
 ```
------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 ## Tecnologies
 - Python
@@ -54,7 +54,7 @@ stock-manager-flask
 - SQLAlchemy
 - Migrate
 
------------------------------------------------
+----------------------------------------------------------------------------------------------
 
  ## Required Libraries
 - **```pip install Flask```**: A small web framework to build websites and APIs.
@@ -88,7 +88,11 @@ stock-manager-flask
 - [x] Generate Migration Script (`flask db migrate -m "Initial models"`)
 - [x] Apply Migrations to Database (`flask db upgrade`)
 
------------------------------------------------
+### Step 3 - Creating Routes
+- [ ] Create login router
+- [ ] Create recovery password router
+
+----------------------------------------------------------------------------------------------
 
 ## About flask
 Flask is a lightweight and easy-to-use web framework for Python. It is designed to help developers build web applications quickly and with minimal code. Flask is called a "micro" framework because it provides only the essential tools needed for web development, such as routing (handling URLs), request handling, and template rendering. However, it can be extended with additional libraries for more complex features like databases or user authentication.
@@ -113,7 +117,7 @@ Flask is a lightweight and easy-to-use web framework for Python. It is designed 
 - *Templates* – Flask supports Jinja2, a powerful template engine to create dynamic HTML pages.
 - *Extensible* – You can add plugins for databases (like SQLite or PostgreSQL), forms, security, and more. 
 
------------------------------------------------
+----------------------------------------------------------------------------------------------
 ## About SQLAlchemy and Models
 
 **SQLAlchemy** is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
@@ -157,7 +161,7 @@ db.session.commit()
 users = User.query.all()
 print(users)  # Output: [<User john>]
 ```
------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 ## 📦 Database Migrations with Flask-Migrate
 
@@ -219,3 +223,42 @@ flask db upgrade
 | ``flask db upgrade``	            | Apply the migration to the database |
 | ``flask db downgrade``	          | Revert the last migration           |
 | ``flask db history``	            | Show the history of migrations      |
+
+----------------------------------------------------------------------------------------------
+
+## Routes
+In Flask, routes are the URLs that users or applications use to interact with your web application. A route tells Flask what to do when a specific URL is accessed.
+
+### How Routes Work
+1. Routing is based on URL patterns.
+You define a route using a decorator like ``@app.route('/example')``.
+2. Each route is connected to a function, called a view function, that returns a response (usually HTML or JSON).
+3. When someone accesses the route URL, Flask runs the corresponding function and returns the result.
+
+### Simple Example
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return 'Welcome to the homepage!'
+
+@app.route('/about')
+def about():
+    return 'About this application.'
+```
+Here:
+- Accessing / → runs home() and returns Welcome to the homepage!
+- Accessing /about → runs about() and returns About this application.
+
+### Route + HTTP Method Example
+```python
+@app.route('/products', methods=['POST'])
+def create_product():
+    return 'Product created!'
+```
+Here:
+- The route ``/products`` only accepts ``POST`` requests.
+- If a user sends a GET request to ``/products``, it will return an error (``405 Method Not Allowed``).

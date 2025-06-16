@@ -24,6 +24,14 @@ def create_app(config_name=None):
   @app.route('/')
   def home():
       return 'Welcome to home page'
+  
+  @app.route('/login/')
+  def login():
+     return 'Here will enter the login screen'
+  
+  @app.route('/recovery-password')
+  def recovery_password():
+     return 'Here will enter the recovery password screen'
 
   # Returns the configured app to use outside (e.g., in run.py)
   return app
