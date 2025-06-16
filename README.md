@@ -262,3 +262,27 @@ def create_product():
 Here:
 - The route ``/products`` only accepts ``POST`` requests.
 - If a user sends a GET request to ``/products``, it will return an error (``405 Method Not Allowed``).
+
+###  Dynamic Route
+A dynamic route is a route that accepts variable parts in the URL, allowing you to respond based on user input directly from the path.
+
+Examples:
+```python
+@app.route('/user/<username>')
+def show_user_profile(username):
+    return f'Profile page for {username}'
+
+@app.route('/product/<int:product_id>')
+def show_product(product_id):
+    return f'Displaying product #{product_id}'
+```
+Here:
+- When you access ``/user/lara``, the function receives ``lara`` as the ``username`` argument.
+- Flask extracts the value from the URL and passes it to your function automatically.
+- Accessing /product/42 will call show_product(42)
+- You can also specify types:
+    - ``<string:username>`` (default)
+    - ``<int:id>``
+    - ``<float:price>``
+    - ``<path:filepath>`` (accepts slashes /)
+    - ``<uuid:uid>``
