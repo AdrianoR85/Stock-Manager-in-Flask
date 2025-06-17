@@ -1,5 +1,4 @@
-import os 
-from flask import Flask
+from flask import Flask, request
 from config import app_active, app_config
 from flask_sqlalchemy import SQLAlchemy
 
@@ -32,6 +31,19 @@ def create_app(config_name=None):
   @app.route('/recovery-password')
   def recovery_password():
      return 'Here will enter the recovery password screen'
+  
+  @app.route('/profile', methods=['POST'])
+  def create_profile():
+    username = request.form['username']
+    password = request.form['password']
 
+    return f'This route has a post method e will create an user with the data; User:{username} and Password: {password}'
+
+  @app.route('/profile/<int:id>', methods=['PUT'])
+  def edit_total_profile(id):
+    username = request.form['username']
+    password = request.form['password']
+
+    return f'This route has a PUT method e will edit the username to {username} and password to {password}'
   # Returns the configured app to use outside (e.g., in run.py)
   return app
