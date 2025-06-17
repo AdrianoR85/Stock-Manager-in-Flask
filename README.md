@@ -93,6 +93,7 @@ stock-manager-flask
 - [x] Create recovery password router
 
 ### Step 4 - Creating Controllers
+- [x] Add methods in User model
 - [ ] Create login controller
 - [ ] Create recovery controller
 

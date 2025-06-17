@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from config import app_active, app_config
+from passlib.hash import pbkdf2_sha256
 
 from model.Role import Role
 
@@ -17,3 +18,36 @@ class User(db.Model):
   active = db.Column(db.Boolean(), default=1, nullable=True)
   
   role = db.Column(db.Integer, db.ForeignKey(Role), nullable=False)
+
+  def get_user_by_email(self):
+    """
+    It will be built later 
+    """
+    return ''
+  
+  def get_user_by_id(self, id):
+    """
+    It will be built later 
+    """
+    return ''
+
+  def update(self, obj):
+    """
+    It will be built later 
+    """
+    return ''
+  
+  def hash_password(self, password):
+    try:
+      return pbkdf2_sha256.hash(password)
+    except Exception as e:
+      print(f'Error trying to encrypt the password {password}')
+  
+  def set_password(self, password):
+    self.password = pbkdf2_sha256.hash(password)
+  
+  def verify_password(self, hash_password, database_password):
+    try:
+      return pbkdf2_sha256.verify(hash_password, database_password)
+    except ValueError:
+      return False
