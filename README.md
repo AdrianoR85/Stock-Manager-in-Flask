@@ -56,7 +56,7 @@ stock-manager-flask
 
 ----------------------------------------------------------------------------------------------
 
- ## Required Libraries
+## Required Libraries
 - **```pip install Flask```**: A small web framework to build websites and APIs.
 - **```pip install Flask-SQLAlchemy```**: A tool to help Python talk to databases using objects
 - **```pip install Flask-Admin```**: A tool to create an admin panel for your Flask app
@@ -89,8 +89,12 @@ stock-manager-flask
 - [x] Apply Migrations to Database (`flask db upgrade`)
 
 ### Step 3 - Creating Routes
-- [ ] Create login router
-- [ ] Create recovery password router
+- [x] Create login router
+- [x] Create recovery password router
+
+### Step 4 - Creating Controllers
+- [ ] Create login controller
+- [ ] Create recovery controller
 
 ----------------------------------------------------------------------------------------------
 
@@ -118,6 +122,7 @@ Flask is a lightweight and easy-to-use web framework for Python. It is designed 
 - *Extensible* – You can add plugins for databases (like SQLite or PostgreSQL), forms, security, and more. 
 
 ----------------------------------------------------------------------------------------------
+
 ## About SQLAlchemy and Models
 
 **SQLAlchemy** is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
@@ -286,3 +291,19 @@ Here:
     - ``<float:price>``
     - ``<path:filepath>`` (accepts slashes /)
     - ``<uuid:uid>``
+
+-----------------------------------------------------------------------------
+
+## Controllers
+A controller is a piece of code that receives a request (like when someone clicks a button or opens a page), decides what to do, and sends back a response.
+
+Think of it like a waiter in a restaurant:
+- 🍽️ The customer (user) tells the waiter (controller) what they want.
+- 🧑‍🍳 The waiter goes to the kitchen (the database or business logic).
+- 🧾 Then the waiter brings the food (the response) back to the customer.
+
+### In Web Apps (like Flask, Express, etc.)
+- A controller usually handles things like:
+- Checking if the request is valid (did the user send all the required info?)
+- Calling the right function or talking to the database
+- Returning a result (like a message, a webpage, or data in JSON)
