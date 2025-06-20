@@ -1,6 +1,8 @@
-from flask import Flask, request
+from flask import Flask, request, redirect, render_template
 from config import app_active, app_config
 from flask_sqlalchemy import SQLAlchemy
+
+from controller.User import UserController
 
 # Gets the active environment settings (development, test, or production)
 config = app_config[app_active]
@@ -28,10 +30,35 @@ def create_app(config_name=None):
   def login():
      return 'Here will enter the login screen'
   
+  @app.route('/login', methods=['POST'])
+  def login_post():
+    user = UserController()
+
+    email = request.form['email']
+    password = request.form['password']
+
+    result = user.login(email, password)
+
+    if result:
+      return redirect('/admin')
+    else:
+       return render_template('login.html', data={"status": 401,"msg": "User doesn't found", "type": None})
+
   @app.route('/recovery-password')
   def recovery_password():
      return 'Here will enter the recovery password screen'
   
+
+  @app.route('/recovery-password', methods=['POST'])
+  def send_recovery_password():
+    user = UserController()
+    result = user.recovery(request.form['email'])
+
+    if result:
+      return render_template("recovery.html", data={"status":201, "msg":"Recovery email sent succefully."})
+    else:
+      return render_template("recovery.html", data={"staus":401, "msg":"Erro sending recovery email."})
+
   @app.route('/profile', methods=['POST'])
   def create_profile():
     username = request.form['username']
