@@ -94,8 +94,8 @@ stock-manager-flask
 
 ### Step 4 - Creating Controllers
 - [x] Add methods in User model
-- [ ] Create login controller (User contoller)
-- [ ] Create recovery controller (User controller)
+- [x] Create login controller (User contoller)
+- [x] Create recovery controller (User controller)
 
 ----------------------------------------------------------------------------------------------
 
