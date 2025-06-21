@@ -97,6 +97,15 @@ stock-manager-flask
 - [x] Create login controller (User contoller)
 - [x] Create recovery controller (User controller)
 
+### Step 5 - Setting up our admin
+- [x] Install ``flask-admin`` library
+- [ ] Modify ``app.py`` to enable the Flask Admin Area.
+- [ ] Configuring the ``admin.py`` file
+- [ ] Create a relationship in the Admin Panel
+- [ ] Customize the admin
+- [ ] Customize the ModelView
+- [ ] Customize the Labels
+- [ ] Customize the Admin Home
 ----------------------------------------------------------------------------------------------
 
 ## About flask
