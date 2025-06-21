@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template
 from config import app_active, app_config
 from flask_sqlalchemy import SQLAlchemy
+from admin.Admin import start_views
 
 from controller.User import UserController
 
@@ -16,6 +17,8 @@ def create_app(config_name=None):
   # Loads all settings (DEBUG, SECRET_KEY, database URL, etc.)
   # from the chosen environment (development/test/production)
   app.config.from_object(app_config[config_name])
+
+  start_views(app,db)
 
   # Initialize SQLAlchemy
   db = SQLAlchemy(config.APP)
@@ -72,5 +75,6 @@ def create_app(config_name=None):
     password = request.form['password']
 
     return f'This route has a PUT method e will edit the username to {username} and password to {password}'
+  
   # Returns the configured app to use outside (e.g., in run.py)
   return app

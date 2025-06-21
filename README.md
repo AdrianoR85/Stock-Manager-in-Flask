@@ -99,9 +99,9 @@ stock-manager-flask
 
 ### Step 5 - Setting up our admin
 - [x] Install ``flask-admin`` library
-- [ ] Modify ``app.py`` to enable the Flask Admin Area.
-- [ ] Configuring the ``admin.py`` file
-- [ ] Create a relationship in the Admin Panel
+- [x] Modify ``app.py`` to enable the Flask Admin Area.
+- [x] Create the start_views function in ``Admin.py`` file
+- [ ] Create relationships between tables
 - [ ] Customize the admin
 - [ ] Customize the ModelView
 - [ ] Customize the Labels
@@ -317,3 +317,25 @@ Think of it like a waiter in a restaurant:
 - Checking if the request is valid (did the user send all the required info?)
 - Calling the right function or talking to the database
 - Returning a result (like a message, a webpage, or data in JSON)
+
+## Admin
+Flask-Admin is an extension for the Flask web framework that helps you quickly create an admin interface for managing your application's data.
+
+### How to use in this project.
+1. Install the flask-admin library.
+2. In the app.py file, import the start_views method from admin.Admin. This method will be created later
+3. In Inside create_app call the start_views method with the app and db attributes. This method is responsible for activating the flask administrative area. 
+ - `start_views(app, db)` 
+4. Create the function start_views in Admin.py
+    ```python
+    def start_views(app, db):
+        admin = Admin(app, name="Meu Estoque", template_mode="bootstrap3")
+        admin.add_view(ModelView(Role,db.session, "Funções", category="Usuários"))
+    ```
+ - ``Admin``: It is class from flask_admin that creates the admin interface
+ - ``add_view``:  Adds a new model view (like a CRUD page) to the admin panel.
+ - ``ModelView``: Creates a full interface (list, create, edit, delete) for the given SQLAlchemy model. 
+ - ``Role``: The SQLAlchemy model you want to manage.
+ - ``db.session``: The database session used to interact with the model.
+ - ``name="Funções"``: The name of the view (what will appear in the admin menu).
+ - ``category="Usuários"``: Groups this view under a category in the admin menu (like a folder).
