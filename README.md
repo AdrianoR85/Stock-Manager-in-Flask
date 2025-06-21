@@ -333,9 +333,9 @@ Flask-Admin is an extension for the Flask web framework that helps you quickly c
         admin.add_view(ModelView(Role,db.session, "Funções", category="Usuários"))
     ```
  - ``Admin``: It is class from flask_admin that creates the admin interface
- - ``add_view``:  Adds a new model view (like a CRUD page) to the admin panel.
+ - ``add_view``: Method to create a view in our administration system
  - ``ModelView``: Creates a full interface (list, create, edit, delete) for the given SQLAlchemy model. 
  - ``Role``: The SQLAlchemy model you want to manage.
  - ``db.session``: The database session used to interact with the model.
- - ``name="Funções"``: The name of the view (what will appear in the admin menu).
- - ``category="Usuários"``: Groups this view under a category in the admin menu (like a folder).
+ - ``name``: The name of the view (what will appear in the admin menu).
+ - ``category``: Groups this view under a category in the admin menu (like a folder).
