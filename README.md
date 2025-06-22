@@ -57,12 +57,13 @@ stock-manager-flask
 ----------------------------------------------------------------------------------------------
 
 ## Required Libraries
-- **```pip install Flask```**: A small web framework to build websites and APIs.
-- **```pip install Flask-SQLAlchemy```**: A tool to help Python talk to databases using objects
-- **```pip install Flask-Admin```**: A tool to create an admin panel for your Flask app
-- **```pip install pymysql```**: A library that lets Python connect to a MySQL database.
-- **```pip install Flask-Migrate```**: Helps manage changes in the database using Alembic.
-- **```pip install passlib```**: A library to hash (encrypt) passwords safely.
+- **``pip install Flask``**: A small web framework to build websites and APIs.
+- **``pip install Flask-SQLAlchemy``**: A tool to help Python talk to databases using objects
+- **``pip install Flask-Admin``**: A tool to create an admin panel for your Flask app
+- **``pip install pymysql``**: A library that lets Python connect to a MySQL database.
+- **``pip install Flask-Migrate``**: Helps manage changes in the database using Alembic.
+- **``pip install passlib``**: A library to hash (encrypt) passwords safely.
+- **``wtforms==2.3.0``**: Library used by Flask-Admin and Flask-WTF to build and validate web forms. Version 2.3.0 ensures compatibility with Flask-Admin, avoiding errors related to session or form handling.
 
 ## 🛠️ Steps
 

@@ -16,14 +16,15 @@ def create_app(config_name=None):
 
   # Loads all settings (DEBUG, SECRET_KEY, database URL, etc.)
   # from the chosen environment (development/test/production)
+  app.secret_key = config.SECRET
   app.config.from_object(app_config[config_name])
-
 
   # Initialize SQLAlchemy
   db = SQLAlchemy(config.APP)
+  start_views(app,db)
+  
   db.init_app(app)
   
-  start_views(app,db)
 
   # Main route (home page)
   @app.route('/')
