@@ -18,11 +18,12 @@ def create_app(config_name=None):
   # from the chosen environment (development/test/production)
   app.config.from_object(app_config[config_name])
 
-  start_views(app,db)
 
   # Initialize SQLAlchemy
   db = SQLAlchemy(config.APP)
   db.init_app(app)
+  
+  start_views(app,db)
 
   # Main route (home page)
   @app.route('/')
@@ -51,7 +52,6 @@ def create_app(config_name=None):
   def recovery_password():
      return 'Here will enter the recovery password screen'
   
-
   @app.route('/recovery-password', methods=['POST'])
   def send_recovery_password():
     user = UserController()

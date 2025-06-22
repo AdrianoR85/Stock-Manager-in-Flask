@@ -17,7 +17,7 @@ class User(db.Model):
   recovery_code = db.Column(db.String(200), nullable=True)
   active = db.Column(db.Boolean(), default=1, nullable=True)
   
-  role = db.Column(db.Integer, db.ForeignKey(Role), nullable=False)
+  role = db.Column(db.Integer, db.ForeignKey(Role.id), nullable=False)
 
   def get_user_by_email(self):
     """
