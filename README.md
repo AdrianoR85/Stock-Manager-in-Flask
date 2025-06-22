@@ -102,7 +102,8 @@ stock-manager-flask
 - [x] Install ``flask-admin`` library
 - [x] Modify ``app.py`` to enable the Flask Admin Area.
 - [x] Create the start_views function in ``Admin.py`` file
-- [ ] Create relationships between tables
+- [x] Create relationships between tables
+- [x] Create UserView
 - [ ] Customize the admin
 - [ ] Customize the ModelView
 - [ ] Customize the Labels
