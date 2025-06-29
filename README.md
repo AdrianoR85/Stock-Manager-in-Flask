@@ -341,3 +341,16 @@ Flask-Admin is an extension for the Flask web framework that helps you quickly c
  - ``db.session``: The database session used to interact with the model.
  - ``name``: The name of the view (what will appear in the admin menu).
  - ``category``: Groups this view under a category in the admin menu (like a folder).
+
+5. Custome the View (UserView in this case)
+```python
+    class UserView(ModelView):
+    column_exclude_list = ['password', 'recovery_code'] # Remove from visualization
+    form_excluded_columns = ['last_update', 'recovery_code']
+    form_columns = ['funcao', 'username', 'email', 'password', 'date_created', 'active'
+```
+- ``column_exclude_list``: Allow you to delete elements from the screem.
+- ``form_excluded_columns``:   Allow you to delete a field from the item creating and editing form
+- ``form_columns``: The columns you want to display in the form.
+
+6. Implement the view in the Admin.py file
