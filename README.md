@@ -354,3 +354,25 @@ Flask-Admin is an extension for the Flask web framework that helps you quickly c
 - ``form_columns``: The columns you want to display in the form.
 
 6. Implement the view in the Admin.py file
+7. Custom labels and Descriptions
+```python
+    column_labels = {
+        'funcao': 'Função',
+        'username': 'Nome de usuário',
+        'email': 'Email',
+        'date_created': 'Data de criação',
+        'last_update': 'Date de atualização',
+        'active': 'Ativo',
+        'password': 'Senha'
+    }
+
+    column_descriptions = {
+    'funcao': 'Função no painel adminstrativo',
+    'username': 'Nome de usuário no sistema',
+    'email': 'Email do usuário no sistema',
+    'date_created': 'Data de criação do usuario no sistema',
+    'last_update': 'Última atualização desse usuário no sistema',
+    'active': 'Estado ativo ou inativo no sistema',
+    'password': 'Senha do usuário no sistema'
+  }
+```

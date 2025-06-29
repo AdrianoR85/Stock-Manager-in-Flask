@@ -14,6 +14,27 @@ class UserView(ModelView):
     }
   }
 
+  column_labels = {
+    'funcao': 'Função',
+    'username': 'Nome de usuário',
+    'email': 'Email',
+    'date_created': 'Data de criação',
+    'last_update': 'Date de atualização',
+    'active': 'Ativo',
+    'password': 'Senha'
+  }
+
+  column_descriptions = {
+    'funcao': 'Função no painel adminstrativo',
+    'username': 'Nome de usuário no sistema',
+    'email': 'Email do usuário no sistema',
+    'date_created': 'Data de criação do usuario no sistema',
+    'last_update': 'Última atualização desse usuário no sistema',
+    'active': 'Estado ativo ou inativo no sistema',
+    'password': 'Senha do usuário no sistema'
+  }
+
+
   can_set_page_size=True
   can_view_details=True
   column_searchable_list=['username', 'email']
