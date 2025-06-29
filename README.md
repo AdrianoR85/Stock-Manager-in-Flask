@@ -104,9 +104,9 @@ stock-manager-flask
 - [x] Create the start_views function in ``Admin.py`` file
 - [x] Create relationships between tables
 - [x] Create UserView
-- [ ] Customize the admin
-- [ ] Customize the ModelView
-- [ ] Customize the Labels
+- [x] Customize the admin
+- [x] Customize the ModelView
+- [x] Customize the Labels
 - [ ] Customize the Admin Home
 ----------------------------------------------------------------------------------------------
 
