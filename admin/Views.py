@@ -60,3 +60,6 @@ class UserView(ModelView):
         User.set_password(form.password.data)
       else:
         del form.password
+
+class ProductView(ModelView):
+  form_columns = ['usuario', 'categoria', 'name', 'description', 'qtd', 'image', 'price', 'date_created', 'last_update', 'status']
