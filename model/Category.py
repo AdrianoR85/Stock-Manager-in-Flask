@@ -1,10 +1,7 @@
-from config import app_active, app_config
+from extensions import db
 
 from flask_sqlalchemy import SQLAlchemy
 from model.User import User
-
-config = app_config[app_active]
-db = SQLAlchemy(config.APP)
 
 class Category(db.Model):
   id = db.Column(db.Integer, primary_key=True)

@@ -39,7 +39,6 @@ class Config:
   SECRET= 'ysb_92=qe#dgjf8%0ng+a*#4rt#5%3*4kw5%i2bck*gn@w3@f&-&' 
   TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)),'templates')
   ROOT_FOLDER = os.path.dirname(os.path.abspath(__file__))
-  APP = None
   SQLALCHEMY_DATABASE_URI = (
     f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
@@ -77,3 +76,5 @@ app_config = {
 }
 
 app_active = os.getenv('FLASK_ENV', 'development') 
+
+

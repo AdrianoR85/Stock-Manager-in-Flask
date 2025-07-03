@@ -1,13 +1,11 @@
-from config import app_active, app_config
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
+
+from extensions import db
 
 from model.Category import Category
 from model.User import User
 
-config = app_config[app_active]
-db = SQLAlchemy(config.APP)
 
 class Product(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +15,7 @@ class Product(db.Model):
   image = db.Column(db.Text(), nullable=True)
   price = db.Column(db.Numeric(10,2), nullable=False)
   date_created = db.Column(db.DateTime(6), default=db.func.now(), nullable=False)
-  last_update = db.Column(db.DateTime(6), onupdate=db.func.now(), nullable=False)
+  last_update = db.Column(db.DateTime(6), onupdate=db.func.now())
   status = db.Column(db.Boolean(), default=1, nullable=False)
 
   user_created = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
@@ -25,3 +23,22 @@ class Product(db.Model):
 
   usuario = relationship(User)  
   categoria = db.relationship(Category)
+
+  def get_all():
+    try:
+      res = db.session.query(Product).all()
+    except Exception as e:
+      res = []
+      print(e)
+    finally:
+      db.session.close()
+      return res
+  
+  def save(self):
+    try:
+      db.session.add(self)
+      db.session.commit()
+    except Exception as e:
+      print(e)
+      db.session.rollback()
+      return False

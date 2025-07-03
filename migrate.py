@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import app_active, app_config
+from extensions import db
 
 config = app_config[app_active]
 
@@ -9,9 +10,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
 
 class Role(db.Model):
   id= db.Column(db.Integer, primary_key=True)
@@ -45,7 +44,7 @@ class Product(db.Model):
   image = db.Column(db.Text(), nullable=True)
   price = db.Column(db.Numeric(10,2), nullable=False)
   date_created = db.Column(db.DateTime(6), default=db.func.now(), nullable=False)
-  last_update = db.Column(db.DateTime(6), onupdate=db.func.now(), nullable=False)
+  last_update = db.Column(db.DateTime(6), onupdate=db.func.now())
   status = db.Column(db.Boolean(), default=1, nullable=False)
 
   user_created = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)

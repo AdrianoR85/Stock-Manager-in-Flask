@@ -2,8 +2,10 @@ from flask import Flask, request, redirect, render_template
 from config import app_active, app_config
 from flask_sqlalchemy import SQLAlchemy
 from admin.Admin import start_views
-
 from controller.User import UserController
+from controller.Product import ProductController
+
+from extensions import db
 
 # Gets the active environment settings (development, test, or production)
 config = app_config[app_active]
@@ -11,21 +13,17 @@ config = app_config[app_active]
 def create_app(config_name=None):
   if not config_name:
      config_name = 'development'
-  # Creates the Flask app and sets the 'templates' folder
   app = Flask(__name__, template_folder='templates')
-
-  # Loads all settings (DEBUG, SECRET_KEY, database URL, etc.)
-  # from the chosen environment (development/test/production)
   app.secret_key = config.SECRET
   app.config.from_object(app_config[config_name])
 
+  app.config['FLASK_ADMIN_SWATCH'] = 'paper'
+
   # Initialize SQLAlchemy
-  db = SQLAlchemy(config.APP)
   start_views(app,db)
   
   db.init_app(app)
   
-
   # Main route (home page)
   @app.route('/')
   def home():
@@ -77,5 +75,20 @@ def create_app(config_name=None):
 
     return f'This route has a PUT method e will edit the username to {username} and password to {password}'
   
+
+  @app.route('/product', methods=['POST'])
+  def save_products():
+    product = ProductController()
+
+    result = product.save_product(request.form)
+    print(result)
+    if result:
+      message='Inserido'
+    else:
+      message='Não Inserido'
+
+    return message
+
+
   # Returns the configured app to use outside (e.g., in run.py)
   return app
