@@ -1,7 +1,13 @@
 from flask_admin.contrib.sqla import ModelView
+from flask_admin import AdminIndexView, expose
 from config import app_active, app_config
 
 config = app_config[app_active]
+
+class HomeView(AdminIndexView):
+  @expose('/')
+  def index(self):
+    return self.render('home_admin.html', data={'username': 'Lara Croft'})
 
 class UserView(ModelView):
   column_exclude_list = ['password', 'recovery_code'] # Remove from visualization
@@ -33,7 +39,6 @@ class UserView(ModelView):
     'active': 'Estado ativo ou inativo no sistema',
     'password': 'Senha do usuário no sistema'
   }
-
 
   can_set_page_size=True
   can_view_details=True
