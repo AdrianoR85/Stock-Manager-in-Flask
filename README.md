@@ -112,9 +112,10 @@ stock-manager-flask
 ### Step 6 - SQLAlchimy
 Here, we will create the queries in the models, use the controllers to call those queries, and finally add those controllers to the routes in app.py
 Product:
-    - [x] Insert new product
+    - [x] Save new product
     - [x] Update a product
-    - [ ] Delete a product
+    - [x] Delete a product
+    - [ ] Filter products
 
 ----------------------------------------------------------------------------------------------
 
