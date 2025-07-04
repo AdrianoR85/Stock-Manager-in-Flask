@@ -114,8 +114,6 @@ Here, we will create the queries in the models, use the controllers to call thos
 Product:
     - [x] Save new product
     - [x] Update a product
-    - [x] Delete a product
-    - [ ] Filter products
 
 ----------------------------------------------------------------------------------------------
 
