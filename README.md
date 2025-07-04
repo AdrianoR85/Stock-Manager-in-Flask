@@ -107,7 +107,15 @@ stock-manager-flask
 - [x] Customize the admin
 - [x] Customize the ModelView
 - [x] Customize the Labels
-- [ ] Customize the Admin Home
+- [x] Customize the Admin Home
+
+### Step 6 - SQLAlchimy
+Here, we will create the queries in the models, use the controllers to call those queries, and finally add those controllers to the routes in app.py
+Product:
+    - [x] Insert new product
+    - [x] Update a product
+    - [ ] Delete a product
+
 ----------------------------------------------------------------------------------------------
 
 ## About flask
