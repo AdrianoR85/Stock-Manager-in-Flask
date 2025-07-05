@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from admin.Admin import start_views
 from controller.User import UserController
 from controller.Product import ProductController
-
+from flask_bootstrap import Bootstrap
 from extensions import db
 
 # Gets the active environment settings (development, test, or production)
@@ -22,6 +22,8 @@ def create_app(config_name=None):
   # Initialize SQLAlchemy
   start_views(app,db)
   
+  Bootstrap(app)
+
   db.init_app(app)
   
   # Main route (home page)
@@ -31,7 +33,7 @@ def create_app(config_name=None):
   
   @app.route('/login/')
   def login():
-     return 'Here will enter the login screen'
+     return render_template('login.html')
   
   @app.route('/login', methods=['POST'])
   def login_post():
