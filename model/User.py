@@ -1,7 +1,7 @@
 from sqlalchemy.orm import relationship
 from passlib.hash import pbkdf2_sha256
 from model.Role import Role
-
+from sqlalchemy import func
 from extensions import db
 
 class User(db.Model):
@@ -54,4 +54,12 @@ class User(db.Model):
     except ValueError:
       return False
 
-  
+  def get_total_users(self):
+    try:
+      res = db.session.query(func.count(User.id)).first()
+    except Exception as e:
+      res = []
+      print(e)
+    finally:
+      db.session.close()
+      return res

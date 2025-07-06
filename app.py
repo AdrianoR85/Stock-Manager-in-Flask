@@ -33,7 +33,7 @@ def create_app(config_name=None):
   
   @app.route('/login/')
   def login():
-     return render_template('login.html')
+     return render_template('login.html', message="Essa é uma mensagem que veio da rota")
   
   @app.route('/login', methods=['POST'])
   def login_post():

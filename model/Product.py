@@ -1,8 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
-
+from sqlalchemy import func
 from extensions import db
-
 from model.Category import Category
 from model.User import User
 
@@ -63,3 +62,13 @@ class Product(db.Model):
       db.session.rollback()
       print(e)
       return False
+  
+  def get_total_Products(self):
+    try:
+      res = db.session.query(func.count(Product.id)).first()
+    except Exception as e:
+      res = []
+      print(e)
+    finally:
+      db.session.close()
+      return res
