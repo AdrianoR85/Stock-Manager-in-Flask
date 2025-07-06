@@ -8,6 +8,7 @@ from model.Product import Product
 config = app_config[app_active]
 
 class HomeView(AdminIndexView):
+  extra_css = [config.URL_MAIN + 'static/css/home.css','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css']
   @expose('/')
   def index(self):
     user_model = User()
