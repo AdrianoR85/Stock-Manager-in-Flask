@@ -6,7 +6,7 @@ from config import app_active, app_config
 config = app_config[app_active]
 # Create the Flask app and save it in config.APP
 app = create_app(app_active)
-
+print(f'URL - {config.URL_MAIN}')
 # Run the app only if this file is executed directly
 if __name__ == "__main__":
   # Start the server with custom host and port from config

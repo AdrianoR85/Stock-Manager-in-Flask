@@ -6,7 +6,7 @@ from model.Category import Category
 from model.Product import Product
 
 config = app_config[app_active]
-
+print(config.URL_MAIN)
 class HomeView(AdminIndexView):
   extra_css = [config.URL_MAIN + 'static/css/home.css','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css']
   @expose('/')
