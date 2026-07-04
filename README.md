@@ -16,35 +16,43 @@ This project follows the book's content, with notes, example code, and some poss
 ## 📁 Project Structure
 ```bash
 stock-manager-flask
-| app.py
 | config.py
-| migrate.py
+| logging_config.py
 | run.py
 | 
-|__admin
-|  | Admin.py
-|  | Views.py 
-|
-|__model
-|  | Category.py
-|  | Product.py 
-|  | User.py
-|  | Role.py
-|
-|__controller
-|  | Email.py
-|  | Product.py 
-|  | User.py
-|  
-|__static
-|  | login.css
-|  | home.css 
-|  
-|__template
-|  | login.html
-|  | home_admin.html 
-|  | lnew_password.html
-|  | recovery.html
+|__app/
+|  |
+|  | __init__.py
+|  | extensions.py
+|  |
+|  |__admin/
+|  |    | __init__.py
+|  |    | Admin.py
+|  |    | Views.py 
+|  |
+|  |__model/
+|  |    | __init__.py
+|  |    | Category.py
+|  |    | Product.py 
+|  |    | User.py
+|  |    | Role.py
+|  |
+|  |__controller/
+|  |    | __init__.py
+|  |    | Email.py
+|  |    | Product.py 
+|  |    | User.py
+|  |  
+|  |__static/
+|  |    | login.css
+|  |    | home.css 
+|  |
+|  |__template
+|  |    | base.html
+|  |    | pages/ 
+|  |        | home_admin.html 
+|  |        | lnew_password.html
+|  |        | recovery.html
 ```
 ----------------------------------------------------------------------------------------------
 
@@ -62,59 +70,8 @@ stock-manager-flask
 - **``pip install Flask-Admin``**: A tool to create an admin panel for your Flask app
 - **``pip install pymysql``**: A library that lets Python connect to a MySQL database.
 - **``pip install Flask-Migrate``**: Helps manage changes in the database using Alembic.
-- **``pip install passlib``**: A library to hash (encrypt) passwords safely.
 - **``wtforms==2.3.0``**: Library used by Flask-Admin and Flask-WTF to build and validate web forms. Version 2.3.0 ensures compatibility with Flask-Admin, avoiding errors related to session or form handling.
--- **`flask-bootstrap`**
 
-## 🛠️ Steps
-
-### Step 1 - Getting Started
-
-- [x] Creating the Structure.
-- [x] Install the required libraries.
-- [x] Create environments for each phase of the project.
-- [x] Create a Flask Application.
-- [x] Configure Flask Database (SQL Alchemy).
-- [x] Run the Flask Application.
-
-### Step 2 -  Database Setup
-#### Models:
-- [x] Create User Mode
-- [x] Create Role Model
-- [x] Create Category Model
-- [x] Create Product Model
-
-#### Migrations
-- [x] Configuring the migrate.py file
-- [x] Initialize Migration System (`flask db init`)
-- [x] Generate Migration Script (`flask db migrate -m "Initial models"`)
-- [x] Apply Migrations to Database (`flask db upgrade`)
-
-### Step 3 - Creating Routes
-- [x] Create login router
-- [x] Create recovery password router
-
-### Step 4 - Creating Controllers
-- [x] Add methods in User model
-- [x] Create login controller (User contoller)
-- [x] Create recovery controller (User controller)
-
-### Step 5 - Setting up our admin
-- [x] Install ``flask-admin`` library
-- [x] Modify ``app.py`` to enable the Flask Admin Area.
-- [x] Create the start_views function in ``Admin.py`` file
-- [x] Create relationships between tables
-- [x] Create UserView
-- [x] Customize the admin
-- [x] Customize the ModelView
-- [x] Customize the Labels
-- [x] Customize the Admin Home
-
-### Step 6 - SQLAlchimy
-Here, we will create the queries in the models, use the controllers to call those queries, and finally add those controllers to the routes in app.py
-Product:
-- [x] Save new product
-- [x] Update a product
 
 ----------------------------------------------------------------------------------------------
 
