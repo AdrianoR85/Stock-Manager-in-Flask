@@ -6,7 +6,7 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 
-    TEMPLATE_FOLDER = BASE_DIR / "templates"
+    TEMPLATE_FOLDER = BASE_DIR / "app/templates"
     ROOT_DIR = BASE_DIR
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
