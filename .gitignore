@@ -1,3 +1,5 @@
-flask_venv
 .env 
+.vscode/
+.imvenv/
+
 **/__pycache__/
