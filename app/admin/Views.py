@@ -1,13 +1,29 @@
 from app.extensions import ModelView
 from flask_admin import AdminIndexView, expose
+from app.controller import UserController, ProductController, CategoryController
 
 
 class HomeView(AdminIndexView):
+    extra_css = ["/static/css/home.css","https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"]
+
+    
     @expose("/")
     def index(self):
-        return self.render("pages/home_admin.html", data={
-            "username":"Lara Croft"
-        })
+        user_controller = UserController()
+        category_controller = CategoryController()
+        product_controller = ProductController()
+
+        user = user_controller.total_users()
+        category = category_controller.total_categories()   
+        product = product_controller.total_products()
+
+        return self.render("pages/home_admin.html",
+                          report={
+                            "users": 0 if user is None else user,
+                            "categories": 0 if category is None else category,
+                            "products": 0 if product is None else product
+                          } 
+                        )
 
 
 class UserView(ModelView):

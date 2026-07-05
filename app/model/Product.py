@@ -20,5 +20,16 @@ class Product(db.Model):
     usuario = db.relationship("User")
     categoria = db.relationship("Category")
 
+
+    @classmethod
+    def get_all(cls):
+        """Return all products from the database."""
+        return cls.query.all()
+
+    @classmethod
+    def count_products(cls):
+        """Return the total count of products."""
+        return cls.query.count()
+    
     def __repr__(self):
         return f'<Product {self.name}>'

@@ -2,6 +2,7 @@
 import os
 
 from flask_admin import babel
+from flask_bootstrap import Bootstrap
 
 from config import config
 from logging_config import logger
@@ -21,6 +22,7 @@ def create_app():
 
     app.config.from_object(config[environment])
     
+    Bootstrap(app)
     db.init_app(app)
     migrate.init_app(app, db)
     babel.init_app(app)
@@ -42,10 +44,11 @@ def create_app():
     @app.route("/")
     def index():
         return f"Hello, World!"
-
-    from app.routes import auth_bp
     
 
+    from app.routes import auth_bp
+
     app.register_blueprint(auth_bp)
+
 
     return app

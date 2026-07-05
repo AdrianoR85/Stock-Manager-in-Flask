@@ -1,22 +1,20 @@
 from app.model import User
 
 class UserController:
-    def __init__(self):
-        self.user_model = User()
+    @staticmethod
+    def login(email, password):
+        user = User.get_by_email(email)
 
-
-    def login(self, email, password):
-        self.user_model.email = email
-        result = self.user_model.get_user_by_email(email)
-
-        if result is not None:
-            if self.user_model.verify_password(password):
-                return result
-            else:
-                return {}
-        else:
-            return {}
-
+        if user is not None:
+            if user.verify_password(password):
+                return user
+        
+        return {}
     
-    def recovery_password(self, email):
-        pass
+    @staticmethod
+    def total_users():
+        try:
+            return User.count_users()
+        except Exception as e:
+            print(f"Error occurred while fetching total users: {e}")
+            return None
