@@ -19,9 +19,9 @@ class HomeView(AdminIndexView):
 
         return self.render("pages/home_admin.html",
                           report={
-                            "users": 0 if user is None else user,
-                            "categories": 0 if category is None else category,
-                            "products": 0 if product is None else product
+                            "users": user.get("data") or 0,
+                            "categories": category.get("data") or 0,
+                            "products": product.get("data") or 0
                           } 
                         )
 

@@ -1,4 +1,6 @@
+from unittest import result
 from app.model import User
+from app.extensions import logger
 
 class UserController:
     @staticmethod
@@ -13,8 +15,12 @@ class UserController:
     
     @staticmethod
     def total_users():
+        result = {}
         try:
-            return User.count_users()
+            result['data'] = User.count_users()
+            result['status'] = 200
         except Exception as e:
-            print(f"Error occurred while fetching total users: {e}")
-            return None
+            logger.exception("Error fetching total users")
+            result['status'] = 500
+            result['message'] = str(e)
+        return result

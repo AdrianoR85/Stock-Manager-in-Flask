@@ -12,7 +12,7 @@ class Product(db.Model):
     image = db.Column(db.Text(), nullable=True)
     date_created = db.Column(db.DateTime(6), default=db.func.current_timestamp(), nullable=False)
     last_updated = db.Column(db.DateTime(6), default=db.func.current_timestamp(), onupdate=db.func.current_timestamp(), nullable=False)
-    status = db.Column(db.Boolean, default=1, nullable=True)
+    status = db.Column(db.Boolean, default=True, nullable=True)
 
     user_created = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     category = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
@@ -22,14 +22,26 @@ class Product(db.Model):
 
 
     @classmethod
-    def get_all(cls):
+    def get_all(cls, limit=None):
         """Return all products from the database."""
-        return cls.query.all()
+        query = cls.query.order_by(cls.date_created.desc())
+        if limit is not None:
+            query = query.limit(limit)
+        return query.all()
+
+
+    @classmethod
+    def get_by_id(cls, product_id):
+        """Return a product by its ID."""
+        return db.session.get(cls, product_id)
+
 
     @classmethod
     def count_products(cls):
         """Return the total count of products."""
         return cls.query.count()
     
+    
+
     def __repr__(self):
         return f'<Product {self.name}>'

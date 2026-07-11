@@ -1,12 +1,17 @@
 from app.model import Category
 
+from app.extensions import logger
+
 class CategoryController:
 
     @staticmethod
     def total_categories():
-        """Return the total count of categories."""
+        result = {}
         try:
-            return Category.count_categories()
+            result['data'] = Category.count_categories()
+            result['status'] = 200
         except Exception as e:
-            print(f"Error occurred while fetching total categories: {e}")
-            return None    
+            logger.exception("Error fetching total users")
+            result['status'] = 500
+            result['message'] = str(e)
+        return result

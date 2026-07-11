@@ -46,9 +46,10 @@ def create_app():
         return f"Hello, World!"
     
 
-    from app.routes import auth_bp
+    from app.routes import auth_bp, product_bp
 
     app.register_blueprint(auth_bp)
+    app.register_blueprint(product_bp)
 
 
     return app

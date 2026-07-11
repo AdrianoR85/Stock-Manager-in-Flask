@@ -9,8 +9,7 @@ auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 # Login route
 @auth_bp.route("/login/", methods=["GET", "POST"])
 def login():
-    return render_template("pages/login.html")
-    """if request.method == "POST":
+    if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
 
@@ -20,7 +19,7 @@ def login():
             return redirect("/admin")
         else:
             return render_template("pages/login.html", data={"status": 401, "message": "Invalid email or password.", "type": None})
-    return render_template("pages/login.html")"""
+    return render_template("pages/login.html")
 
 
 # Recovery password route
